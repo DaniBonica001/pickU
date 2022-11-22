@@ -27,8 +27,8 @@ const SignIn = () => {
         <View style={styles.root}>
         <Image source={Logo} style={[styles.logo, {height: height * 0.3}]} resizeMode="contain" />
         
-        <CustomInput placeholder="Username" value={username} setValue={setUsername}/>
-        <CustomInput placeholder="Password" value={password} setValue={setPassword} secureTextEntry={true} />
+        <CustomInput label="Email" placeholder="Ingresa tu correo electrónico" value={username} setValue={setUsername}/>
+        <CustomInput label="Password" placeholder="Ingresa tu contraseña" value={password} setValue={setPassword} secureTextEntry={true} />
 
 
         <CustomButton text="Ingresar" onPress={onSignInPressed}/>
