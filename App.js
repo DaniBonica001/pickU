@@ -1,16 +1,31 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { Provider } from "react-redux";
-import SignIn from "./screens/SignIn";
 import { store } from "./store";
-//  1) Set up redux
-//
+
+import SignIn from "./screens/SignIn";
+import RegisterDriver from "./screens/RegisterDriver";
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <NavigationContainer>
+      <Stack.Navigator> 
+      <Stack.Screen options={{headerShown: false}} name="SignIn" component={SignIn} />
+      <Stack.Screen name="RegisterDriver" component={RegisterDriver} />
+
+      </Stack.Navigator>
+
+    </NavigationContainer>
+    /*
     <Provider style={styles.container} store={store} >
       <SignIn />
-    </Provider>
+    </Provider>*/
   );
 }
 
