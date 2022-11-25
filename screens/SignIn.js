@@ -1,16 +1,10 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  useWindowDimensions,
-  ScrollView,
-  KeyboardAvoidingView,
-} from "react-native";
+import { useNavigation } from "@react-navigation/core";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, Image, useWindowDimensions, ScrollView, KeyboardAvoidingView } from "react-native";
 import Logo from "../assets/logo.png";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
+import { auth } from "../firebase";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -19,15 +13,34 @@ const SignIn = () => {
   const { height } = useWindowDimensions();
 
   const onSignInPressed = () => {
-    console.warn("Sign in pressed");
+    auth
+      .signInWithEmailAndPassword(username, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("Logged in with:", user.username);
+      })
+      .catch((error) => alert(error.message));
   };
 
-  const onDriverPressed = () => {
-    console.warn("Driver pressed");
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigation.navigate("HomeScreen");
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleSignUpDriver = () => {
+    navigation.navigate("RegisterDriver");
   };
 
-  const onPassengerPressed = () => {
-    console.warn("Passenger pressed");
+  const handleSignUpPassenger = () => {
+    navigation.navigate("RegisterPassenger");
   };
 
   return (
@@ -55,15 +68,17 @@ const SignIn = () => {
           />
 
           <CustomButton text="Ingresar" onPress={onSignInPressed} />
+
           <CustomButton
             text="Registrarse como Conductor"
-            onPress={onDriverPressed}
+            onPress={handleSignUpDriver}
             bgColor="#CDD7FF"
             fgColor="#5A7AFF"
           />
+
           <CustomButton
             text="Registrarse como Pasajero"
-            onPress={onPassengerPressed}
+            onPress={handleSignUpPassenger}
             bgColor="#CDD7FF"
             fgColor="#5A7AFF"
           />
@@ -77,7 +92,7 @@ export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
-    flex:  1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     padding: 30,
