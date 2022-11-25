@@ -35,13 +35,16 @@ const SignIn = () => {
     return unsubscribe;
   }, []);
 
-  const handleSignUpDriver = () => {
-    navigation.navigate("RegisterDriver");
-  };
 
   const handleSignUpPassenger = () => {
     navigation.navigate("RegisterPassenger");
   };
+  
+  const handleSignUpDriver = () => {
+    navigation.navigate("RegisterDriver");
+  };
+
+  
 
   return (
     <KeyboardAvoidingView behavior="padding">

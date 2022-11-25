@@ -5,6 +5,7 @@ import { store } from "./store";
 
 import SignIn from "./screens/SignIn";
 import RegisterDriver from "./screens/RegisterDriver";
+import RegisterPassenger from "./screens/RegisterPassenger";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -18,6 +19,7 @@ export default function App() {
       <Stack.Navigator> 
       <Stack.Screen options={{headerShown: false}} name="SignIn" component={SignIn} />
       <Stack.Screen name="RegisterDriver" component={RegisterDriver} />
+      <Stack.Screen name="RegisterPassenger" component={RegisterPassenger} />
 
       </Stack.Navigator>
 

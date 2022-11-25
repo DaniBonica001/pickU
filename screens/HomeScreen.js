@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const RegisterDriver = () => {
+const HomeScreen = () => {
   return (
     <View style={styles.root}>
       <Text>HomeScreen</Text>
@@ -9,6 +9,6 @@ const RegisterDriver = () => {
   );
 };
 
-export default RegisterDriver;
+export default HomeScreen;
 
 const styles = StyleSheet.create({});
