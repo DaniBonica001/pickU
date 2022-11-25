@@ -29,42 +29,44 @@ const RegisterPassenger = () => {
           style={[styles.logo, { height: height * 0.2 }]}
           resizeMode="contain"
         />
-        <Text style={{ color: "#131530", fontSize: 40, fontWeight: "bold" }}>
-          ¡Te estas registrando como{" "}
-        </Text>
-        <Text style={{ color: "#5A7AFF", fontSize: 40, fontWeight: "bold" }}>
-          Pasajero!
-        </Text>
+          <Text style={{ color: "#131530", fontSize: 30, fontWeight: "bold" }}>
+            ¡Te estas registrando como{" "}
+          </Text>
+          <Text style={{ color: "#5A7AFF", fontSize: 30, fontWeight: "bold" }}>
+            Pasajero!
+          </Text>
+
         <View style={styles.inputContainer}>
           <CustomInput
             iconName="account-circle-outline"
-            label=""
+            label="Nombre"
             placeholder="Nombre completo"
           />
 
           <CustomInput
             iconName="account-box-outline"
-            label=""
+            label="Cédula de ciudadanía"
             placeholder="Cédula de ciudadanía"
           />
 
           <CustomInput
             iconName="calendar-outline"
-            label=""
+            label="Fecha de nacimiento"
             placeholder="Fecha de nacimiento"
           />
 
           <CustomInput
             iconName="email-outline"
-            label=""
+            label="Correo institucional"
             placeholder="Correo institucional"
           />
 
           <CustomInput
             iconName="phone-outline"
-            label=""
+            label="Teléfono"
             placeholder="Número de celular"
           />
+          
 
           <CustomInput
             iconName="lock-outline"
@@ -73,12 +75,16 @@ const RegisterPassenger = () => {
             secureTextEntry={true}
           />
 
-          <CustomButton text="Ingresar" onPress={onRegisterPressed} />
+          <CustomButton text="siguiente" onPress={onRegisterPressed} />
 
           <Text
-            onPress={() => navigation.navigate("SignIn")}
             style={styles.text}
-          >¿Ya tienes una cuenta? Inicia sesión</Text>
+          >¿Ya tienes una cuenta?</Text>
+          <Text onPress={() => navigation.navigate("SignIn")}
+            style={{ color: "#5A7AFF", fontSize: 16, fontWeight: "bold" }}
+          >Inicia sesión
+          </Text>
+
         </View>
       </ScrollView>
     </SafeAreaView>
