@@ -30,12 +30,13 @@ const styles = StyleSheet.create({
 
   inputContainer: {
     height:50,
-    backgroundColor: "#F3F4FB",    
+    backgroundColor: "#DDDDDD",    
     flexDirection: "row",
     paddingHorizontal: 15,
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: "#e8e8e8",   
-    marginVertical: 1    
+    borderColor: "#DDDDDD",   
+    marginVertical: 1,
+    color: "#4D4D4D"   
   }
 });

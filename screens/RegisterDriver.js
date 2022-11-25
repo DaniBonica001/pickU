@@ -1,14 +1,43 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  ScrollViewComponent,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  useWindowDimensions,
+} from "react-native";
+import Logo from "../assets/logo.png";
+import CustomInput from "../components/CustomInput";
+import CustomButton from "../components/CustomButton";
 
 const RegisterDriver = () => {
+
+  const { height } = useWindowDimensions();
+
   return (
-    <View style={styles.root}>
-      <Text>RegisterDriver</Text>
+    <View style={styles.inputContainer}>
+      <Image
+        source={Logo}
+        style={[styles.logo, { height: height * 0.3 }]}
+        resizeMode="contain"
+      />
+
     </View>
   );
 };
 
 export default RegisterDriver;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  inputContainer:{
+    flex: 1,    
+    alignItems: "center"
+
+  },
+  logo: {
+    width: "70%",
+    maxWidth: 500,
+    maxHeight: 200,
+  },
+});
