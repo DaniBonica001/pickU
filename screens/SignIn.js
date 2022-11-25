@@ -7,8 +7,8 @@ import CustomButton from "../components/CustomButton";
 import { auth } from "../firebase";
 
 const SignIn = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  //const [username, setUsername] = useState("");
+  //const [password, setPassword] = useState("");
 
   const { height } = useWindowDimensions();
 
@@ -57,16 +57,14 @@ const SignIn = () => {
           />
 
           <CustomInput
+            iconName="email-outline"
             label="Email"
             placeholder="Ingresa tu correo electrónico"
-            value={username}
-            setValue={setUsername}
           />
           <CustomInput
+            iconName="lock-outline"
             label="Password"
             placeholder="Ingresa tu contraseña"
-            value={password}
-            setValue={setPassword}
             secureTextEntry={true}
           />
 

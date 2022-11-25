@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  ScrollViewComponent,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -10,32 +10,78 @@ import {
 import Logo from "../assets/logo.png";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const RegisterPassenger = () => {
-
   const { height } = useWindowDimensions();
 
-  return (
-    <View style={styles.inputContainer}>
-      <Image
-        source={Logo}
-        style={[styles.logo, { height: height * 0.3 }]}
-        resizeMode="contain"
-      />
+  const onRegisterPressed = () => {
+    navigation.navigate("SignIn");
+  };
 
-      <CustomInput
-            label="Name"
-            placeholder="Ingresa tu correo electrónico"
-            value={username}
-            setValue={setUsername}
-      />
-      <CustomInput
-            label="Email"
-            placeholder="Ingresa tu correo electrónico"
-            value={username}
-            setValue={setUsername}
-      />
-    </View>
+  return (
+    <SafeAreaView
+      style={{ backgroundColor: "white", flex: 1, alignContent: "center" }}
+    >
+      <ScrollView style={{ paddingTop: 50, paddingHorizontal: 20 }}>
+        <Image
+          source={Logo}
+          style={[styles.logo, { height: height * 0.2 }]}
+          resizeMode="contain"
+        />
+        <Text style={{ color: "#131530", fontSize: 40, fontWeight: "bold" }}>
+          ¡Te estas registrando como{" "}
+        </Text>
+        <Text style={{ color: "#5A7AFF", fontSize: 40, fontWeight: "bold" }}>
+          Pasajero!
+        </Text>
+        <View style={styles.inputContainer}>
+          <CustomInput
+            iconName="account-circle-outline"
+            label=""
+            placeholder="Nombre completo"
+          />
+
+          <CustomInput
+            iconName="account-box-outline"
+            label=""
+            placeholder="Cédula de ciudadanía"
+          />
+
+          <CustomInput
+            iconName="calendar-outline"
+            label=""
+            placeholder="Fecha de nacimiento"
+          />
+
+          <CustomInput
+            iconName="email-outline"
+            label=""
+            placeholder="Correo institucional"
+          />
+
+          <CustomInput
+            iconName="phone-outline"
+            label=""
+            placeholder="Número de celular"
+          />
+
+          <CustomInput
+            iconName="lock-outline"
+            label="Contraseña"
+            placeholder="Ingresa tu contraseña"
+            secureTextEntry={true}
+          />
+
+          <CustomButton text="Ingresar" onPress={onRegisterPressed} />
+
+          <Text
+            onPress={() => navigation.navigate("SignIn")}
+            style={styles.text}
+          >¿Ya tienes una cuenta? Inicia sesión</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
