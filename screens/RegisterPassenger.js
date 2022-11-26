@@ -6,11 +6,13 @@ import {
   View,
   Image,
   useWindowDimensions,
+  useState
 } from "react-native";
 import Logo from "../assets/logo.png";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 
 const RegisterPassenger = () => {
   const { height } = useWindowDimensions();
@@ -18,6 +20,19 @@ const RegisterPassenger = () => {
   const onRegisterPressed = () => {
     navigation.navigate("SignIn");
   };
+
+  const [passenger, setPassenger] = useState({
+    name: "",
+    id: "",
+    birthday: "",
+    email: "",
+    phone: "",
+    password: ""
+  });
+
+  const handleChangeText = (name,value) => {
+    setPassenger({...passenger, [name]: value});
+  }
 
   return (
     <SafeAreaView
@@ -41,30 +56,35 @@ const RegisterPassenger = () => {
             iconName="account-circle-outline"
             label="Nombre"
             placeholder="Nombre completo"
+            onChangeText= {(value) => handleChangeText("name", value)}
           />
 
           <CustomInput
             iconName="account-box-outline"
             label="Cédula de ciudadanía"
             placeholder="Cédula de ciudadanía"
+            onChangeText= {(value) => handleChangeText("id", value)}
           />
 
           <CustomInput
             iconName="calendar-outline"
             label="Fecha de nacimiento"
             placeholder="Fecha de nacimiento"
+            onChangeText= {(value) => handleChangeText("birthday", value)}
           />
 
           <CustomInput
             iconName="email-outline"
             label="Correo institucional"
             placeholder="Correo institucional"
+            onChangeText= {(value) => handleChangeText("email", value)}
           />
 
           <CustomInput
             iconName="phone-outline"
             label="Teléfono"
             placeholder="Número de celular"
+            onChangeText= {(value) => handleChangeText("phone", value)}
           />
           
 
@@ -73,6 +93,7 @@ const RegisterPassenger = () => {
             label="Contraseña"
             placeholder="Ingresa tu contraseña"
             secureTextEntry={true}
+            onChangeText= {(value) => handleChangeText("password", value)}
           />
 
           <CustomButton text="siguiente" onPress={onRegisterPressed} />
