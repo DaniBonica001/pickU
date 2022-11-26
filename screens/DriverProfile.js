@@ -43,15 +43,22 @@ const DriverProfile = () => {
         </View>
 
         <View style = {styles.userInfoSection}>
+            <View>
+                <Text>Rate</Text>
+            </View>
             <View style = {styles.menuItem}>
                 <Entypo name="star" size={20} color={colors.black} />
+                <Entypo name="star" size={20} color={colors.black} />
+                <Entypo name="star" size={20} color={colors.black} />
+                <Entypo name="star" size={20} color={colors.black} />
+                <Entypo name="star-outlined" size={20} color={colors.black} />
             </View>
 
         </View>
         
       
 
-      <View style={styles.sidedCont}>
+      <View style={styles.sideButtons}>
         
             <TouchableOpacity
                 onPress={() => claimCupo()}
@@ -75,15 +82,14 @@ const DriverProfile = () => {
 export default DriverProfile;
 
 const styles = StyleSheet.create({
-    sidedCont: {
+    sideButtons: {
         flexDirection: 'column',
-        paddingHorizontal: 320,
-        marginVertical: 320
+        paddingHorizontal: 320
     },
     userInfoSection: {
         paddingHorizontal: 30,
         marginBottom: 25,
-      },
+    },
     menuItem: {
         flexDirection: 'row',
         paddingVertical: 5,
