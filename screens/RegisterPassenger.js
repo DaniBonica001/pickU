@@ -6,19 +6,22 @@ import {
   View,
   Image,
   useWindowDimensions,
-  useState
+  
 } from "react-native";
 import Logo from "../assets/logo.png";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import firebase from "../database/firebase";
+import {useState} from "react";
+import {TextInput} from "react-native";
 
 const RegisterPassenger = () => {
   const { height } = useWindowDimensions();
 
   const onRegisterPressed = () => {
-    navigation.navigate("SignIn");
+    console.log(passenger);
+    
   };
 
   const [passenger, setPassenger] = useState({
@@ -27,13 +30,14 @@ const RegisterPassenger = () => {
     birthday: "",
     email: "",
     phone: "",
-    password: ""
+    password: "",
   });
 
   const handleChangeText = (name,value) => {
     setPassenger({...passenger, [name]: value});
-  }
+  };
 
+  console.log(passenger);
   return (
     <SafeAreaView
       style={{ backgroundColor: "white", flex: 1, alignContent: "center" }}
@@ -67,10 +71,10 @@ const RegisterPassenger = () => {
           />
 
           <CustomInput
-            iconName="calendar-outline"
-            label="Fecha de nacimiento"
-            placeholder="Fecha de nacimiento"
-            onChangeText= {(value) => handleChangeText("birthday", value)}
+            iconName="email-outline"
+            label="Correo institucional"
+            placeholder="Correo institucional"
+            onChangeText= {(value) => handleChangeText("email", value)}
           />
 
           <CustomInput
@@ -96,7 +100,7 @@ const RegisterPassenger = () => {
             onChangeText= {(value) => handleChangeText("password", value)}
           />
 
-          <CustomButton text="siguiente" onPress={onRegisterPressed} />
+          <CustomButton text="Ingresar" onPress={onRegisterPressed} />
 
           <Text
             style={styles.text}
@@ -124,6 +128,6 @@ const styles = StyleSheet.create({
     width: "70%",
     maxWidth: 500,
     maxHeight: 200,
-  },
+  }
 });
 

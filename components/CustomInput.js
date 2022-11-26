@@ -11,6 +11,7 @@ const CustomInput = ({
   placeholder,
   secureTextEntry,
   onFocus = () => {},
+  ...props
 }) => {
   const [isFocused, setIsFocused] = React.useState(false);
   return (
@@ -29,9 +30,6 @@ const CustomInput = ({
 
         <TextInput
           style={styles.input}
-          placeholder={placeholder}
-          value={value}
-          onChangeText={setValue}
           secureTextEntry={secureTextEntry}
           autoCorrect={false}
           onFocus={() => {
@@ -39,6 +37,7 @@ const CustomInput = ({
             setIsFocused(true);
           }}
           onBlur={() => setIsFocused(false)}
+          {...props}
         />
       </View>
 
