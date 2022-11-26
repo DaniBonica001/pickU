@@ -8,6 +8,7 @@ import RegisterDriver from "./screens/RegisterDriver";
 import RegisterPassenger from "./screens/RegisterPassenger";
 import HomeScreen from "./screens/HomeScreen";
 import ChatScreen from "./screens/ChatScreen";
+import DriverProfile from "./screens/DriverProfile";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -25,6 +26,7 @@ export default function App() {
       <Stack.Screen name="RegisterPassenger" component={RegisterPassenger} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="ChatScreen" component={ChatScreen} />
+      <Stack.Screen name="DriverProfile" component={DriverProfile} />
 
       </Stack.Navigator>
 

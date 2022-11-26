@@ -5,27 +5,38 @@ import colors from '../colors';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-const HomeScreen = () => {
+const DriverProfile = () => {
 
   const navigation = useNavigation();
 
+  const claimCupo = () => {
+    console.log('cupo claimed');
+  }
+
   return (
     <SafeAreaView style={styles.root}>
-      <Text>HomeScreen</Text>
+      <Text>Driver</Text>
 
       <View style={styles.container}>
             <TouchableOpacity
-                onPress={() => navigation.navigate("DriverProfile")}
+                onPress={() => navigation.navigate("ChatScreen")}
                 style={styles.chatButton}
             >
-                <Entypo name="bowl" size={24} color={colors.lightGray} />
+                <Entypo name="chat" size={24} color={colors.lightGray} />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress={() => claimCupo()}
+                style={styles.chatButton}
+            >
+                <Entypo name="add-user" size={24} color={colors.lightGray} />
             </TouchableOpacity>
         </View>
     </SafeAreaView>
   );
 };
 
-export default HomeScreen;
+export default DriverProfile;
 
 const styles = StyleSheet.create({
   chatButton: {
