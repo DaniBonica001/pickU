@@ -4,6 +4,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import colors from '../colors';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import {Avatar,Title,Caption} from 'react-native-paper';
+import Logo from "../assets/User.png";
+
 
 const DriverProfile = () => {
 
@@ -15,22 +18,55 @@ const DriverProfile = () => {
 
   return (
     <SafeAreaView style={styles.root}>
-      <Text>Driver</Text>
+      <Text>Driver Screen</Text>
+        <View style={styles.userInfoSection}>
+            <View style={{flexDirection: 'row', marginTop: 15}}>
+                <Avatar.Image
+                    source = {Logo}
+                    size = {80}
+                />
+                <View>
+                    <Title>Gabriel Delgado</Title>
+                    <Caption style = {styles.caption}>@Gabriel10</Caption>
+                </View>
+            </View>
+        </View>
 
-      <View style={styles.container}>
+        <View style = {styles.userInfoSection}>
+            <View style = {styles.menuItem}>
+                <Entypo name="address" size={20} color={colors.black} />
+                <View style = {styles.userInfoSection}>
+                    <Text>Cra 85b #33-55</Text>
+                </View>
+            </View>
+
+        </View>
+
+        <View style = {styles.userInfoSection}>
+            <View style = {styles.menuItem}>
+                <Entypo name="star" size={20} color={colors.black} />
+            </View>
+
+        </View>
+        
+      
+
+      <View style={styles.sidedCont}>
+        
+            <TouchableOpacity
+                onPress={() => claimCupo()}
+                style={styles.chatButton}
+            >
+                <Entypo name="ticket" size={24} color={colors.lightGray} />
+            </TouchableOpacity>
+
             <TouchableOpacity
                 onPress={() => navigation.navigate("ChatScreen")}
                 style={styles.chatButton}
             >
                 <Entypo name="chat" size={24} color={colors.lightGray} />
             </TouchableOpacity>
-
-            <TouchableOpacity
-                onPress={() => claimCupo()}
-                style={styles.chatButton}
-            >
-                <Entypo name="add-user" size={24} color={colors.lightGray} />
-            </TouchableOpacity>
+            
         </View>
     </SafeAreaView>
   );
@@ -39,21 +75,34 @@ const DriverProfile = () => {
 export default DriverProfile;
 
 const styles = StyleSheet.create({
-  chatButton: {
-    backgroundColor: colors.primary,
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: colors.primary,
-    shadowOffset: {
-        width: 0,
-        height: 2,
+    sidedCont: {
+        flexDirection: 'column',
+        paddingHorizontal: 320,
+        marginVertical: 320
     },
-    shadowOpacity: .9,
-    shadowRadius: 8,
-    marginRight: 20,
-    marginBottom: 50,
-  }
+    userInfoSection: {
+        paddingHorizontal: 30,
+        marginBottom: 25,
+      },
+    menuItem: {
+        flexDirection: 'row',
+        paddingVertical: 5,
+      },
+    chatButton: {
+        backgroundColor: colors.primary,
+        height: 50,
+        width: 50,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: colors.primary,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: .9,
+        shadowRadius: 8,
+        marginRight: 20,
+        marginBottom: 20,
+    }
 });
