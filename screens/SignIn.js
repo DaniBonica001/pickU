@@ -13,14 +13,15 @@ const SignIn = () => {
   const { height } = useWindowDimensions();
 
   const onSignInPressed = () => {
-    auth
+    /*auth
       .signInWithEmailAndPassword(username, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log("Logged in with:", user.username);
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => alert(error.message));*/
+      navigation.navigate("HomeScreen");
   };
 
   const navigation = useNavigation();
