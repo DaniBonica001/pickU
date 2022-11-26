@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -15,8 +15,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const RegisterDriver = ({ navigation }) => {
   const { height } = useWindowDimensions();
 
+  const [passenger, setPassenger] = useState({
+    name: "",
+    id: "",
+    birthday: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
   const onRegisterPressed = () => {
-    navigation.navigate("SignIn");
+    console.log(passenger);
+  };
+
+  const handleChangeText = (name,value) => {
+    setPassenger({...passenger, [name]: value});
   };
 
   return (
@@ -40,30 +53,35 @@ const RegisterDriver = ({ navigation }) => {
             iconName="account-circle-outline"
             label="Nombre"
             placeholder="Nombre completo"
+            onChangeText= {(value) => handleChangeText("name", value)}
           />
 
           <CustomInput
             iconName="account-box-outline"
             label="Cédula de ciudadanía"
             placeholder="Cédula de ciudadanía"
-          />
-
-          <CustomInput
-            iconName="calendar-outline"
-            label="Fecha de nacimiento"
-            placeholder="Fecha de nacimiento"
+            onChangeText= {(value) => handleChangeText("id", value)}
           />
 
           <CustomInput
             iconName="email-outline"
             label="Correo institucional"
             placeholder="Correo institucional"
+            onChangeText= {(value) => handleChangeText("email", value)}
+          />
+
+          <CustomInput
+            iconName="email-outline"
+            label="Correo institucional"
+            placeholder="Correo institucional"
+            onChangeText= {(value) => handleChangeText("email", value)}
           />
 
           <CustomInput
             iconName="phone-outline"
             label="Teléfono"
             placeholder="Número de celular"
+            onChangeText= {(value) => handleChangeText("phone", value)}
           />
           
 
@@ -72,6 +90,7 @@ const RegisterDriver = ({ navigation }) => {
             label="Contraseña"
             placeholder="Ingresa tu contraseña"
             secureTextEntry={true}
+            onChangeText= {(value) => handleChangeText("password", value)}
           />
 
           <CustomButton text="siguiente" onPress={onRegisterPressed} />

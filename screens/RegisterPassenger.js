@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState}  from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -6,23 +6,14 @@ import {
   View,
   Image,
   useWindowDimensions,
-  
 } from "react-native";
 import Logo from "../assets/logo.png";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
-import firebase from "../database/firebase";
-import {useState} from "react";
-import {TextInput} from "react-native";
 
 const RegisterPassenger = () => {
   const { height } = useWindowDimensions();
-
-  const onRegisterPressed = () => {
-    console.log(passenger);
-    
-  };
 
   const [passenger, setPassenger] = useState({
     name: "",
@@ -33,11 +24,14 @@ const RegisterPassenger = () => {
     password: "",
   });
 
+  const onRegisterPressed = () => {
+    console.log(passenger);
+  };
+
   const handleChangeText = (name,value) => {
     setPassenger({...passenger, [name]: value});
   };
 
-  console.log(passenger);
   return (
     <SafeAreaView
       style={{ backgroundColor: "white", flex: 1, alignContent: "center" }}
