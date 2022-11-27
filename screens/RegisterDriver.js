@@ -11,11 +11,12 @@ import Logo from "../assets/logo.png";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
+import {db} from '../firebase'
 
 const RegisterDriver = ({ navigation }) => {
   const { height } = useWindowDimensions();
 
-  const [passenger, setPassenger] = useState({
+  const [driver, setDriver] = useState({
     name: "",
     id: "",
     birthday: "",
@@ -25,12 +26,36 @@ const RegisterDriver = ({ navigation }) => {
   });
 
   const onRegisterPressed = () => {
-    console.log(passenger);
+    insert(driver)
+    
   };
 
   const handleChangeText = (name,value) => {
-    setPassenger({...passenger, [name]: value});
+    setDriver({...driver, [name]: value});
   };
+
+  async function insert(item){
+    try {
+      const response = await db.collection('driver').where('id','==',item.id).get()
+      let items=[]
+      response.forEach((resp) => {
+        items.push(resp.data())
+      });
+      if(items.length!=0){
+        alert("ya hay un conductor con esta id");
+      }else{
+        await db.collection('driver').add(item)
+        alert("Se agrego un conductor");
+        navigation.navigate("SignIn")
+      }
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  async function checkUser(id){
+    return await db.collection('driver').where('id','==',id)
+  }
 
   return (
     <SafeAreaView
@@ -71,10 +96,10 @@ const RegisterDriver = ({ navigation }) => {
           />
 
           <CustomInput
-            iconName="email-outline"
-            label="Correo institucional"
-            placeholder="Correo institucional"
-            onChangeText= {(value) => handleChangeText("email", value)}
+            iconName="calendar-range"
+            label="Fecha de nacimiento"
+            placeholder="Fecha de nacimiento"
+            onChangeText= {(value) => handleChangeText("birthday", value)}
           />
 
           <CustomInput

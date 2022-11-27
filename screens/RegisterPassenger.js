@@ -11,8 +11,9 @@ import Logo from "../assets/logo.png";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
+import {db} from '../firebase.js'
 
-const RegisterPassenger = () => {
+const RegisterPassenger = ({navigation}) => {
   const { height } = useWindowDimensions();
 
   const [passenger, setPassenger] = useState({
@@ -25,12 +26,31 @@ const RegisterPassenger = () => {
   });
 
   const onRegisterPressed = () => {
-    console.log(passenger);
+    insert(passenger)
   };
 
   const handleChangeText = (name,value) => {
     setPassenger({...passenger, [name]: value});
   };
+
+  async function insert(item){
+    try {
+      const response = await db.collection('passenger').where('id','==',item.id).get()
+      let items=[]
+      response.forEach((resp) => {
+        items.push(resp.data())
+      });
+      if(items.length!=0){
+        alert("ya hay un pasajero con esta id");
+      }else{
+        await db.collection('passenger').add(item)
+        alert("Se agrego un pasajero");
+        navigation.navigate("SignIn")
+      }
+    } catch (error) {
+      alert(error)
+    }
+  }
 
   return (
     <SafeAreaView
@@ -72,10 +92,10 @@ const RegisterPassenger = () => {
           />
 
           <CustomInput
-            iconName="email-outline"
-            label="Correo institucional"
-            placeholder="Correo institucional"
-            onChangeText= {(value) => handleChangeText("email", value)}
+            iconName="calendar-range"
+            label="Fecha de nacimiento"
+            placeholder="Fecha de nacimiento"
+            onChangeText= {(value) => handleChangeText("birthday", value)}
           />
 
           <CustomInput
