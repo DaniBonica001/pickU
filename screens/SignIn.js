@@ -5,23 +5,45 @@ import Logo from "../assets/logo.png";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { auth } from "../firebase";
+import { db } from "../firebase";
 
 const SignIn = () => {
-  //const [username, setUsername] = useState("");
-  //const [password, setPassword] = useState("");
+  const [user, setUsername] = useState({
+    id: "",
+    password: "",
+  });
 
   const { height } = useWindowDimensions();
 
   const onSignInPressed = () => {
-    /*auth
-      .signInWithEmailAndPassword(username, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log("Logged in with:", user.username);
-      })
-      .catch((error) => alert(error.message));*/
-      navigation.navigate("HomeScreen");
+    signIn(user)
+  };
+
+  async function signIn(item){
+    try {
+      const responseP = await db.collection('passenger').where('id','==',item.id).where('password','==',item.password).get()
+      const responseD = await db.collection('driver').where('id','==',item.id).where('password','==',item.password).get()
+      let items=[]
+      responseP.forEach((resp) => {
+        items.push(resp.data())
+      });
+      responseD.forEach((resp) => {
+        items.push(resp.data())
+      });
+      console
+      if(items.length!=0){
+        alert("Se inicio sesion como "+item.id);
+        navigation.navigate("HomeScreen");
+      }else{
+        alert("Contraseña o usuario incorrecto");
+      }
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  const handleChangeText = (name,value) => {
+    setUsername({...user, [name]: value});
   };
 
   const navigation = useNavigation();
@@ -58,15 +80,17 @@ const SignIn = () => {
           />
 
           <CustomInput
-            iconName="email-outline"
-            label="Email"
-            placeholder="Ingresa tu correo electrónico"
+            iconName="account-box-outline"
+            label="Cédula de ciudadanía"
+            placeholder="Cédula de ciudadanía"
+            onChangeText= {(value) => handleChangeText("id", value)}
           />
           <CustomInput
             iconName="lock-outline"
             label="Password"
             placeholder="Ingresa tu contraseña"
             secureTextEntry={true}
+            onChangeText= {(value) => handleChangeText("password", value)}
           />
 
           <CustomButton text="Ingresar" onPress={onSignInPressed} />
