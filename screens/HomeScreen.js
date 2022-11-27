@@ -3,21 +3,21 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from '../colors';
 import { Entypo } from '@expo/vector-icons';
-import {db} from '../firebase.js'
+import {db} from '../firebase.js';
+import { ListItem, Avatar} from '@rneui/base';
 
 const HomeScreen = ({navigation}) => {
 
   const [users, setUsers] = useState();
 
   useEffect(() => {
-    db.collection('users').onSnapshot(querySnapshot => {
+    db.collection('driver').onSnapshot(querySnapshot => {
       const users = [];
       querySnapshot.docs.forEach(doc => {
-        const {name, document, birthday, email, phone, password} = doc.data()
+        const {name, id, birthday, email, phone, password} = doc.data()
         users.push({
-          id:doc.id,
-          name,
-          document, 
+          id: doc.id,
+          name, 
           birthday, 
           email, 
           phone, 
@@ -51,7 +51,31 @@ const HomeScreen = ({navigation}) => {
             >
                 <Entypo name="list" size={24} color={colors.lightGray} />
             </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress={() => navigation.navigate("ProfileScreen")}
+                style={styles.chatButton}
+            >
+                <Entypo name="user" size={24} color={colors.lightGray} />
+            </TouchableOpacity>
         </View>
+
+        {
+          users.map((user) => {
+            return(
+
+              <ListItem
+                key={user.id}
+              >
+                <ListItem.Chevron/>
+                <ListItem.Content>
+                  <ListItem.Title>{user.name}</ListItem.Title>
+                </ListItem.Content>
+              </ListItem>
+            )
+          })
+        }
+
     </SafeAreaView>
   );
 };

@@ -9,15 +9,19 @@ import RegisterPassenger from "./screens/RegisterPassenger";
 import HomeScreen from "./screens/HomeScreen";
 import ChatScreen from "./screens/ChatScreen";
 import DriverProfile from "./screens/DriverProfile";
+import ProfileScreen from "./screens/ProfileScreen";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
 
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: true}}>
         
@@ -27,6 +31,7 @@ export default function App() {
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="ChatScreen" component={ChatScreen} />
       <Stack.Screen name="DriverProfile" component={DriverProfile} />
+      <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
 
       </Stack.Navigator>
 
