@@ -3,12 +3,9 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from '../colors';
 import { Entypo } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import {db} from '../firebase.js'
 
-const HomeScreen = () => {
-
-  const navigation = useNavigation();
+const HomeScreen = ({navigation}) => {
 
   const [users, setUsers] = useState();
 
@@ -47,7 +44,7 @@ const HomeScreen = () => {
             >
                 <Entypo name="bowl" size={24} color={colors.lightGray} />
             </TouchableOpacity>
-            
+
             <TouchableOpacity
                 onPress={() => handleList()}
                 style={styles.chatButton}

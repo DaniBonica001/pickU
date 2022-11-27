@@ -3,14 +3,11 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from '../colors';
 import { Entypo } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import {Avatar,Title,Caption} from 'react-native-paper';
 import Logo from "../assets/User.png";
 
 
-const DriverProfile = () => {
-
-  const navigation = useNavigation();
+const DriverProfile = ({navigation}) => {
 
   const claimCupo = () => {
     console.log('cupo claimed');

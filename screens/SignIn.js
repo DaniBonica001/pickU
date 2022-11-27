@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/core";
+//import { useNavigation } from "@react-navigation/core";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, useWindowDimensions, ScrollView, KeyboardAvoidingView } from "react-native";
 import Logo from "../assets/logo.png";
@@ -7,7 +7,7 @@ import CustomButton from "../components/CustomButton";
 import { auth } from "../firebase";
 import { db } from "../firebase";
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
   const [user, setUsername] = useState({
     id: "",
     password: "",
@@ -46,12 +46,12 @@ const SignIn = () => {
     setUsername({...user, [name]: value});
   };
 
-  const navigation = useNavigation();
+
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigation.navigate("HomeScreen");
+          const navigation = navigation.navigate("HomeScreen");
       }
     });
 
