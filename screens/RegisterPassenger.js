@@ -18,7 +18,7 @@ const RegisterPassenger = ({navigation}) => {
 
   const [passenger, setPassenger] = useState({
     name: "",
-    id: "",
+    document: "",
     birthday: "",
     email: "",
     phone: "",
@@ -35,13 +35,13 @@ const RegisterPassenger = ({navigation}) => {
 
   async function insert(item){
     try {
-      const response = await db.collection('passenger').where('id','==',item.id).get()
+      const response = await db.collection('passenger').where('document','==',item.document).get()
       let items=[]
       response.forEach((resp) => {
         items.push(resp.data())
       });
       if(items.length!=0){
-        alert("ya hay un pasajero con esta id");
+        alert("ya hay un pasajero con este documento");
       }else{
         await db.collection('passenger').add(item)
         alert("Se agrego un pasajero");
@@ -81,7 +81,7 @@ const RegisterPassenger = ({navigation}) => {
             iconName="account-box-outline"
             label="Cédula de ciudadanía"
             placeholder="Cédula de ciudadanía"
-            onChangeText= {(value) => handleChangeText("id", value)}
+            onChangeText= {(value) => handleChangeText("document", value)}
           />
 
           <CustomInput

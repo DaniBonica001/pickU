@@ -1,13 +1,40 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from '../colors';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import {db} from '../firebase.js'
 
 const HomeScreen = () => {
 
   const navigation = useNavigation();
+
+  const [users, setUsers] = useState();
+
+  useEffect(() => {
+    db.collection('users').onSnapshot(querySnapshot => {
+      const users = [];
+      querySnapshot.docs.forEach(doc => {
+        const {name, document, birthday, email, phone, password} = doc.data()
+        users.push({
+          id:doc.id,
+          name,
+          document, 
+          birthday, 
+          email, 
+          phone, 
+          password
+        })
+      })
+      setUsers(users)
+    })
+
+  })
+
+  const handleList = () => {
+    console.log(users);
+  }
 
   return (
     <SafeAreaView style={styles.root}>
@@ -19,6 +46,13 @@ const HomeScreen = () => {
                 style={styles.chatButton}
             >
                 <Entypo name="bowl" size={24} color={colors.lightGray} />
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+                onPress={() => handleList()}
+                style={styles.chatButton}
+            >
+                <Entypo name="list" size={24} color={colors.lightGray} />
             </TouchableOpacity>
         </View>
     </SafeAreaView>
