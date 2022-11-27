@@ -44,7 +44,7 @@ const DriverProfile = () => {
 
         <View style = {styles.userInfoSection}>
             <View>
-                <Text>Rate</Text>
+                <Text>Driver Rate</Text>
             </View>
             <View style = {styles.menuItem}>
                 <Entypo name="star" size={20} color={colors.black} />
@@ -88,11 +88,16 @@ const styles = StyleSheet.create({
     },
     userInfoSection: {
         paddingHorizontal: 30,
-        marginBottom: 25,
     },
     menuItem: {
         flexDirection: 'row',
         paddingVertical: 5,
+      },
+    caption: {
+        fontSize: 14,
+        lineHeight: 14,
+        fontWeight: '500',
+        paddingHorizontal: 10
       },
     chatButton: {
         backgroundColor: colors.primary,
