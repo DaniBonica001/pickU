@@ -8,29 +8,32 @@ import { ListItem, Avatar} from '@rneui/base';
 
 const HomeScreen = ({navigation}) => {
 
-  const [users, setUsers] = useState([]);
+  const [cupos, setCupos] = useState([]);
 
   useEffect(() => {
-    db.collection('driver').onSnapshot(querySnapshot => {
-      const drivers = [];
+    db.collection('cupo').onSnapshot(querySnapshot => {
+      const cupos = [];
       querySnapshot.docs.forEach(doc => {
-        const {name, birthday, email, phone, password} = doc.data()
-        drivers.push({
+        const {date, beginning, arrive, driverId, passengers, spaces, car, carId} = doc.data()
+        cupos.push({
           id: doc.id,
-          name, 
-          birthday, 
-          email, 
-          phone, 
-          password
+          date, 
+          beginning, 
+          arrive, 
+          driverId, 
+          passengers,
+          spaces,
+          car,
+          carId,
         })
       })
-      setUsers(drivers)
+      setCupos(cupos)
     })
 
   })
 
   const handleList = () => {
-    console.log(users);
+    console.log(cupos);
   }
 
   return (
@@ -38,13 +41,6 @@ const HomeScreen = ({navigation}) => {
       <Text>HomeScreen</Text>
 
       <View style={styles.container}>
-
-            <TouchableOpacity
-                onPress={() => navigation.navigate("CupoScreen")}
-                style={styles.chatButton}
-            >
-                <Entypo name="bowl" size={24} color={colors.lightGray} />
-            </TouchableOpacity>
 
             <TouchableOpacity
                 onPress={() => handleList()}
@@ -64,19 +60,22 @@ const HomeScreen = ({navigation}) => {
                 onPress={() => navigation.navigate("CreateCupo")}
                 style={styles.chatButton}
             >
-                <Entypo name="ticket" size={24} color={colors.lightGray} />
+                <Entypo name="plus" size={24} color={colors.lightGray} />
             </TouchableOpacity>
         </View>
 
         {
-          users.map(user => {
+          cupos.map(cupo => {
             return(
               <ListItem
-                key={user.id}
+                key={cupo.id} onPress={() => navigation.navigate("CupoScreen", {
+                 cupo,
+                 passengerId: "User" //problemita
+                })}
               >
                 <ListItem.Chevron/>
                 <ListItem.Content>
-                  <ListItem.Title>{user.name}</ListItem.Title>
+                  <ListItem.Title>{cupo.arrive}</ListItem.Title>
                 </ListItem.Content>
               </ListItem>
             )
