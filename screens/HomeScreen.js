@@ -38,8 +38,9 @@ const HomeScreen = ({navigation}) => {
       <Text>HomeScreen</Text>
 
       <View style={styles.container}>
+
             <TouchableOpacity
-                onPress={() => navigation.navigate("DriverProfile")}
+                onPress={() => navigation.navigate("CupoScreen")}
                 style={styles.chatButton}
             >
                 <Entypo name="bowl" size={24} color={colors.lightGray} />
