@@ -8,14 +8,14 @@ import { ListItem, Avatar} from '@rneui/base';
 
 const HomeScreen = ({navigation}) => {
 
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     db.collection('driver').onSnapshot(querySnapshot => {
-      const users = [];
+      const drivers = [];
       querySnapshot.docs.forEach(doc => {
-        const {name, id, birthday, email, phone, password} = doc.data()
-        users.push({
+        const {name, birthday, email, phone, password} = doc.data()
+        drivers.push({
           id: doc.id,
           name, 
           birthday, 
@@ -24,7 +24,7 @@ const HomeScreen = ({navigation}) => {
           password
         })
       })
-      setUsers(users)
+      setUsers(drivers)
     })
 
   })
@@ -58,12 +58,18 @@ const HomeScreen = ({navigation}) => {
             >
                 <Entypo name="user" size={24} color={colors.lightGray} />
             </TouchableOpacity>
+            
+            <TouchableOpacity
+                onPress={() => navigation.navigate("CreateCupo")}
+                style={styles.chatButton}
+            >
+                <Entypo name="ticket" size={24} color={colors.lightGray} />
+            </TouchableOpacity>
         </View>
 
         {
-          users.map((user) => {
+          users.map(user => {
             return(
-
               <ListItem
                 key={user.id}
               >
