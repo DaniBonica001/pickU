@@ -7,6 +7,7 @@ import SignIn from "./screens/SignIn";
 import RegisterDriver from "./screens/RegisterDriver";
 import RegisterPassenger from "./screens/RegisterPassenger";
 import HomeScreen from "./screens/HomeScreen";
+import HomeDriver from "./screens/HomeDriver";
 import ChatScreen from "./screens/ChatScreen";
 import DriverProfile from "./screens/DriverProfile";
 import ProfileScreen from "./screens/ProfileScreen";
@@ -31,6 +32,7 @@ export default function App() {
       <Stack.Screen name="RegisterDriver" component={RegisterDriver} />
       <Stack.Screen name="RegisterPassenger" component={RegisterPassenger} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="HomeDriver" component={HomeDriver} />
       <Stack.Screen name="ChatScreen" component={ChatScreen} />
       <Stack.Screen name="DriverProfile" component={DriverProfile} />
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} />

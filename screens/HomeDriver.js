@@ -6,34 +6,30 @@ import { Entypo } from '@expo/vector-icons';
 import {db} from '../firebase.js';
 import { ListItem, Avatar} from '@rneui/base';
 
-const HomeScreen = ({navigation}) => {
+const HomeDriver = ({navigation}) => {
 
-  const [cupos, setCupos] = useState([]);
+  const [requests, setRequests] = useState([]);
 
   useEffect(() => {
-    db.collection('cupo').onSnapshot(querySnapshot => {
-      const cupos = [];
+    db.collection('request').onSnapshot(querySnapshot => {
+      const requests = [];
       querySnapshot.docs.forEach(doc => {
-        const {date, beginning, arrive, driverId, passengers, spaces, car, carId} = doc.data()
-        cupos.push({
+        const {date, cupoId, passengerId, driverId} = doc.data()
+        requests.push({
           id: doc.id,
           date, 
-          beginning, 
-          arrive, 
-          driverId, 
-          passengers,
-          spaces,
-          car,
-          carId,
+          cupoId, 
+          passengerId,
+          driverId
         })
       })
-      setCupos(cupos)
+      setRequests(requests)
     })
 
   })
 
   const handleList = () => {
-    console.log(cupos);
+    console.log(requests);
   }
 
   return (
@@ -50,25 +46,29 @@ const HomeScreen = ({navigation}) => {
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => navigation.navigate("ProfileScreen")}
+                onPress={() => navigation.navigate("DriverProfile")}
                 style={styles.chatButton}
             >
                 <Entypo name="user" size={24} color={colors.lightGray} />
             </TouchableOpacity>
+            
+            <TouchableOpacity
+                onPress={() => navigation.navigate("CreateCupo")}
+                style={styles.chatButton}
+            >
+                <Entypo name="plus" size={24} color={colors.lightGray} />
+            </TouchableOpacity>
         </View>
 
         {
-          cupos.map(cupo => {
+          requests.map(request => {
             return(
               <ListItem
-                key={cupo.id} onPress={() => navigation.navigate("CupoScreen", {
-                 cupo,
-                 passengerId: "User" //problemita
-                })}
+                key={request.id}
               >
                 <ListItem.Chevron/>
                 <ListItem.Content>
-                  <ListItem.Title>{cupo.arrive}</ListItem.Title>
+                  <ListItem.Title>{request.passengerId}</ListItem.Title>
                 </ListItem.Content>
               </ListItem>
             )
@@ -79,7 +79,7 @@ const HomeScreen = ({navigation}) => {
   );
 };
 
-export default HomeScreen;
+export default HomeDriver;
 
 const styles = StyleSheet.create({
   chatButton: {

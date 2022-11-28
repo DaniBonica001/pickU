@@ -53,7 +53,13 @@ const SignIn = ({ navigation }) => {
       console;
       if (items.length != 0) {
         alert("Se inicio sesion como " + item.id);
-        navigation.navigate("HomeScreen");
+
+        if(isEnabled){
+          navigation.navigate("HomeDriver");
+        }else{
+          navigation.navigate("HomeScreen");
+        }
+
       } else {
         alert("Contraseña o usuario incorrecto");
       }
