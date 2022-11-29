@@ -45,8 +45,10 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.root}>
-      <Text>Cupos Disponibles</Text>
+    <SafeAreaView>
+      <View style={styles.topBar}>
+        <Text style={styles.title}>Cupos Disponibles</Text>       
+      </View> 
 
       <View>
         {cupos.map((cupo) => {
@@ -68,7 +70,7 @@ const HomeScreen = ({ navigation }) => {
         })}
       </View>
 
-      <View style={styles.container}>
+      <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => handleList()}
           style={styles.chatButton}
@@ -90,25 +92,29 @@ const HomeScreen = ({ navigation }) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  topBar: {
+    flexDirection: 'row', 
+    backgroundColor: "#E4E9F1", 
+    alignItems: "center", 
+    paddingHorizontal: 20, 
+    padding: 20
+},
+  title: {
+    fontSize: 35,
+    fontWeight: "bold",
+    color: "#131530",
+},
   chatButton: {
     backgroundColor: colors.primary,
-    height: 50,
-    width: 50,
-    borderRadius: 25,
+    height: 75, width: 75,
+    borderRadius: "100%",
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: colors.primary,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.9,
-    shadowRadius: 8,
-    marginRight: 20,
-    marginBottom: 50,
-  },
-  container: {
+    margin: 10
+},
+  buttonContainer: {
     flexDirection: "row",
-    alignSelf: "flex-end",
+    marginLeft: 220,
+    marginTop: 460
   },
 });
