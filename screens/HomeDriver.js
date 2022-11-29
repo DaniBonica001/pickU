@@ -35,8 +35,10 @@ const HomeDriver = ({navigation}) => {
   }
 
   return (
-    <SafeAreaView style={styles.root}>
-      <Text>Lista de Peticiones</Text>
+    <SafeAreaView>
+      <View style={styles.topBar}>
+        <Text style={styles.title}>Cupos Solicitados</Text>       
+      </View>
 
       <View>
         {
@@ -55,7 +57,7 @@ const HomeDriver = ({navigation}) => {
         }
       </View>
 
-      <View style={styles.container}>
+      <View style={styles.buttonContainer}>
 
             <TouchableOpacity
                 onPress={() => handleList()}
@@ -88,21 +90,29 @@ const HomeDriver = ({navigation}) => {
 export default HomeDriver;
 
 const styles = StyleSheet.create({
+  topBar: {
+    flexDirection: 'row', 
+    backgroundColor: "#E4E9F1", 
+    alignItems: "center", 
+    paddingHorizontal: 20, 
+    padding: 20
+},
+  title: {
+    fontSize: 35,
+    fontWeight: "bold",
+    color: "#131530",
+},
   chatButton: {
     backgroundColor: colors.primary,
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: colors.primary,
-    shadowOffset: {
-        width: 0,
-        height: 2,
-    },
-    shadowOpacity: .9,
-    shadowRadius: 8,
-    marginRight: 20,
-    marginBottom: 50,
+    height: 75, width: 75,
+    borderRadius: 75,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    marginLeft: 120,
+    marginTop: 500
   }
 });
