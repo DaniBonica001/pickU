@@ -45,13 +45,17 @@ const CupoScreen = ({route, navigation}) => {
 
     return(
         <View>
-            <Text>CupoScreen Cupo</Text>
-            <Text>Cupo Sapeee</Text>
-            <Text>{id} asda {date}</Text>
-            <Text>{beginning}{arrive}{driverId}</Text>
-            <Text>{passengers}{spaces}</Text>
-            <Text>{car}{carId}</Text>
-            <Text>{logInUser}</Text>
+          <View style={styles.topBar}>
+            <Text style={styles.text}>Informacion Del Cupo</Text>
+            <Text style={styles.text}>Fecha: {date}</Text>
+            <Text style={styles.text}>Lugar Origen: {beginning}</Text>
+            <Text style={styles.text}>Lugar Destino: {arrive}</Text>
+            <Text style={styles.text}>Cupos Disponibles: {spaces}</Text>
+            <Text style={styles.text}>Pasajeros: {passengers}</Text>
+            <Text style={styles.text}>Vehiculo: {car}</Text>
+            <Text style={styles.text}>Placa: {carId}</Text>
+          </View>
+            
             
             <View>
               <Image
@@ -61,20 +65,23 @@ const CupoScreen = ({route, navigation}) => {
               />
             </View>
 
-            <TouchableOpacity
-                onPress={() => navigation.navigate("DriverProfile")}
-                style={styles.chatButton}
-            >
-                <Entypo name="user" size={24} color={colors.lightGray} />
-            </TouchableOpacity>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                  onPress={() => navigation.navigate("DriverProfile")}
+                  style={styles.chatButton}
+              >
+                  <Entypo name="user" size={24} color={colors.lightGray} />
+              </TouchableOpacity>
 
-            <TouchableOpacity
-                onPress={handleRequest}
-                disabled={disabled}
-                style={styles.chatButton}
-            >
-                <Entypo name="ticket" size={24} color={colors.lightGray} />
-            </TouchableOpacity>
+              <TouchableOpacity
+                  onPress={handleRequest}
+                  disabled={disabled}
+                  style={styles.chatButton}
+              >
+                  <Entypo name="ticket" size={24} color={colors.lightGray} />
+              </TouchableOpacity>
+            </View>
+            
         </View>
     )
 }
@@ -104,5 +111,25 @@ const styles = StyleSheet.create({
       height: "55%",
       maxWidth: "100%",
       maxHeight: "100%"
-    }
+    },
+    text: {
+      color: "black",
+      textAlign: "center",
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+    buttonContainer: {
+      flexDirection: "row",
+      marginLeft: 107,
+      marginTop: 0
+    },
+    chatButton: {
+      backgroundColor: colors.primary,
+      height: 75, width: 75,
+      borderRadius: 75,
+      alignItems: "center",
+      justifyContent: "center",
+      margin: 10
+  },
+    
   });

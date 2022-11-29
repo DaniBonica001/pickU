@@ -25,6 +25,13 @@ const RequestScreen = ({ route, navigation }) => {
       <Text style={styles.text}>Id conductor:{driverId}</Text>
 
       <View style={styles.container}>
+        
+        <CustomButton
+          text="Revisar perfil"
+          onPress={checkProfile}
+          bgColor="#FAFAFA"
+          fgColor="#131530"
+        />
         <CustomButton
           text="Aceptar"
           onPress={handleAccept}
@@ -39,12 +46,7 @@ const RequestScreen = ({ route, navigation }) => {
           fgColor="#131530"
         />
 
-        <CustomButton
-          text="Revisar perfil"
-          onPress={checkProfile}
-          bgColor="#FAFAFA"
-          fgColor="#131530"
-        />
+        
       </View>
     </View>
   );
