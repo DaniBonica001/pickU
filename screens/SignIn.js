@@ -48,23 +48,18 @@ const SignIn = ({ navigation }) => {
         .where("password", "==", item.password)
         .get();
       }
-      responseP.forEach((resp) => {
+      response.forEach((resp) => {
         items.push(resp.data());
       });
-
-      responseD.forEach((resp) => {
-        items.push(resp.data());
-      });
-      console;
+     
       if (items.length != 0) {
-        alert("Se inicio sesion como " + item.id);
-
         if(isEnabled){
           navigation.navigate("HomeDriver");
+          alert("Se inicio sesion como conductor: " + item.id);
         }else{
           navigation.navigate("HomeScreen");
+          alert("Se inicio sesion como pasajero: " + item.id);
         }
-
       } else {
         alert("Contraseña o usuario incorrecto");
       }

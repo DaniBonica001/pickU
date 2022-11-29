@@ -20,12 +20,12 @@ const CustomInput = ({
       <View
         style={[
           styles.inputContainer,
-          { borderColor: error ? "red" : isFocused ? "#5a7aff" : "#E4E9F1" },
+          { borderColor: error ? "red" : isFocused ? "#797BB5" : "#F3F4FB" },
         ]}
       >
         <Icon
           name={iconName}
-          style={{ fontSize: 22, color: "#5a7aff", marginRight: 10 }}
+          style={{ fontSize: 22, color: "#797BB5", marginRight: 10 }}
         />
 
         <TextInput
@@ -64,20 +64,20 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#131530",
     fontWeight: "bold",
-    alignSelf: "left",
+    
   },
 
   inputContainer: {
     height: 50,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#FEF4FB",
     flexDirection: "row",
     paddingHorizontal: 15,
-    borderRadius: "100%",
+    borderRadius: 5,
     borderWidth: 1,
     alignItems: "center",
   },
   input: {
-    color: "ff0033",
+    color: "#797BB5",
     flex: 1,
   },
 });
