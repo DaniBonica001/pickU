@@ -33,20 +33,25 @@ const SignIn = ({ navigation }) => {
 
   async function signIn(item) {
     try {
-      const responseP = await db
-        .collection("passenger")
-        .where("id", "==", item.id)
-        .where("password", "==", item.password)
-        .get();
-      const responseD = await db
+      let items = [];
+      let response= ""
+      if(isEnabled){
+         response = await db
         .collection("driver")
         .where("id", "==", item.id)
         .where("password", "==", item.password)
         .get();
-      let items = [];
+      }else{
+        response = await db
+        .collection("passenger")
+        .where("id", "==", item.id)
+        .where("password", "==", item.password)
+        .get();
+      }
       responseP.forEach((resp) => {
         items.push(resp.data());
       });
+
       responseD.forEach((resp) => {
         items.push(resp.data());
       });
