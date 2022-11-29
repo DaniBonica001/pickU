@@ -11,6 +11,7 @@ import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { db } from "../firebase";
+import { logInUser } from "./SignIn";
 
 const CreateCupo = ({navigation}) => {
   const { height } = useWindowDimensions();
@@ -19,7 +20,7 @@ const CreateCupo = ({navigation}) => {
     date: "",
     beginning: "",
     arrive: "",
-    driverId: "",
+    driverId: logInUser,
     passengers: [],
     spaces: 0,
     car: "",

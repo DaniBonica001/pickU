@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 import colors from '../colors';
 import { db } from "../firebase";
+import Mapa from "../assets/mapa.jpg";
+import { logInUser } from './SignIn';
 
 const CupoScreen = ({route, navigation}) => {
 
@@ -14,7 +16,7 @@ const CupoScreen = ({route, navigation}) => {
     const [request, setRequest] = useState({
         date: new Date().toLocaleString(),
         cupoId: id,
-        passengerId: route.params.passengerId,
+        passengerId: logInUser,
         driverId: driverId,
       });
     
@@ -50,6 +52,13 @@ const CupoScreen = ({route, navigation}) => {
             <Text>{passengers}{spaces}</Text>
             <Text>{car}{carId}</Text>
             
+            <View>
+              <Image
+                style={styles.imageMap}
+                source={Mapa}
+                resizeMode="contain"
+              />
+            </View>
 
             <TouchableOpacity
                 onPress={() => navigation.navigate("DriverProfile")}
@@ -89,5 +98,10 @@ const styles = StyleSheet.create({
       shadowRadius: 8,
       marginRight: 20,
       marginBottom: 50,
+    },
+    imageMap: {
+      height: "30%",
+      maxWidth: "100%",
+      maxHeight: "100%"
     }
   });

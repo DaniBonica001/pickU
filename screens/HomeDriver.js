@@ -36,7 +36,24 @@ const HomeDriver = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.root}>
-      <Text>HomeScreen</Text>
+      <Text>Lista de Peticiones</Text>
+
+      <View>
+        {
+          requests.map(request => {
+            return(
+              <ListItem
+                key={request.id} onPress={() => (navigation.navigate("RequestScreen", {request}))}
+              >
+                <ListItem.Chevron/>
+                <ListItem.Content>
+                  <ListItem.Title>{request.passengerId}</ListItem.Title>
+                </ListItem.Content>
+              </ListItem>
+            )
+          })
+        }
+      </View>
 
       <View style={styles.container}>
 
@@ -62,20 +79,7 @@ const HomeDriver = ({navigation}) => {
             </TouchableOpacity>
         </View>
 
-        {
-          requests.map(request => {
-            return(
-              <ListItem
-                key={request.id} onPress={() => (navigation.navigate("RequestScreen", {request}))}
-              >
-                <ListItem.Chevron/>
-                <ListItem.Content>
-                  <ListItem.Title>{request.passengerId}</ListItem.Title>
-                </ListItem.Content>
-              </ListItem>
-            )
-          })
-        }
+        
 
     </SafeAreaView>
   );

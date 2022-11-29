@@ -39,25 +39,9 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.root}>
-      <Text>HomeScreen</Text>
+      <Text>Cupos Disponibles</Text>
 
-      <View style={styles.container}>
-
-            <TouchableOpacity
-                onPress={() => handleList()}
-                style={styles.chatButton}
-            >
-                <Entypo name="list" size={24} color={colors.lightGray} />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                onPress={() => navigation.navigate("ProfileScreen")}
-                style={styles.chatButton}
-            >
-                <Entypo name="user" size={24} color={colors.lightGray} />
-            </TouchableOpacity>
-        </View>
-
+      <View>
         {
           cupos.map(cupo => {
             return(
@@ -75,6 +59,25 @@ const HomeScreen = ({navigation}) => {
             )
           })
         }
+      </View>
+
+      <View style={styles.container}>
+
+            <TouchableOpacity
+                onPress={() => handleList()}
+                style={styles.chatButton}
+            >
+                <Entypo name="list" size={24} color={colors.lightGray} />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress={() => navigation.navigate("ProfileScreen")}
+                style={styles.chatButton}
+            >
+                <Entypo name="user" size={24} color={colors.lightGray} />
+            </TouchableOpacity>
+        </View>
+        
 
     </SafeAreaView>
   );

@@ -9,10 +9,6 @@ import Logo from "../assets/User.png";
 
 
 const DriverProfile = ({navigation}) => {
-    
-  const claimCupo = () => {
-    console.log('cupo claimed');
-  }
 
   return (
     <SafeAreaView style={styles.root}>
@@ -57,13 +53,6 @@ const DriverProfile = ({navigation}) => {
       
 
       <View style={styles.sideButtons}>
-        
-            <TouchableOpacity
-                onPress={() => claimCupo()}
-                style={styles.chatButton}
-            >
-                <Entypo name="ticket" size={24} color={colors.lightGray} />
-            </TouchableOpacity>
 
             <TouchableOpacity
                 onPress={() => navigation.navigate("ChatScreen")}
