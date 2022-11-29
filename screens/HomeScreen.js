@@ -48,7 +48,6 @@ const HomeScreen = ({navigation}) => {
               <ListItem
                 key={cupo.id} onPress={() => navigation.navigate("CupoScreen", {
                  cupo,
-                 passengerId: "User" //problemita
                 })}
               >
                 <ListItem.Chevron/>

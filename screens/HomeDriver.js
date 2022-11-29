@@ -31,7 +31,7 @@ const HomeDriver = ({navigation}) => {
 
   const handleList = () => {
     console.log(requests);
-    alert("bababoy "+logInUser)
+    //alert("bababoy "+logInUser)
   }
 
   return (

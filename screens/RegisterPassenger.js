@@ -35,7 +35,7 @@ const RegisterPassenger = ({navigation}) => {
 
   async function insert(item){
     try {
-      const response = await db.collection('passenger').where('id','==',item.document).get()
+      const response = await db.collection('passenger').where('id','==',item.id).get()
       let items=[]
       response.forEach((resp) => {
         items.push(resp.data())

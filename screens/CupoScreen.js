@@ -47,10 +47,11 @@ const CupoScreen = ({route, navigation}) => {
         <View>
             <Text>CupoScreen Cupo</Text>
             <Text>Cupo Sapeee</Text>
-            <Text>{id}{date}</Text>
+            <Text>{id} asda {date}</Text>
             <Text>{beginning}{arrive}{driverId}</Text>
             <Text>{passengers}{spaces}</Text>
             <Text>{car}{carId}</Text>
+            <Text>{logInUser}</Text>
             
             <View>
               <Image
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
       marginBottom: 50,
     },
     imageMap: {
-      height: "30%",
+      height: "55%",
       maxWidth: "100%",
       maxHeight: "100%"
     }
