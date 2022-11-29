@@ -15,6 +15,7 @@ import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { auth } from "../firebase";
 import { db } from "../firebase";
+let logInUser;
 
 const SignIn = ({ navigation }) => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -54,11 +55,13 @@ const SignIn = ({ navigation }) => {
      
       if (items.length != 0) {
         if(isEnabled){
-          navigation.navigate("HomeDriver");
+          logInUser=item.id
           alert("Se inicio sesion como conductor: " + item.id);
+          navigation.navigate("HomeDriver");
         }else{
-          navigation.navigate("HomeScreen");
+          logInUser=item.id
           alert("Se inicio sesion como pasajero: " + item.id);
+          navigation.navigate("HomeScreen");
         }
       } else {
         alert("Contraseña o usuario incorrecto");
@@ -149,13 +152,15 @@ const SignIn = ({ navigation }) => {
 };
 
 export default SignIn;
+export {logInUser}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 30
+    padding: 30,
+    paddingVertical:0
   },
   logo: {
     width: "50%",

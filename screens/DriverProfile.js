@@ -7,8 +7,9 @@ import {Avatar,Title,Caption} from 'react-native-paper';
 import Logo from "../assets/User.png";
 
 
-const DriverProfile = ({navigation}) => {
 
+const DriverProfile = ({navigation}) => {
+    
   const claimCupo = () => {
     console.log('cupo claimed');
   }

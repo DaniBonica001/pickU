@@ -5,6 +5,7 @@ import colors from '../colors';
 import { Entypo } from '@expo/vector-icons';
 import {db} from '../firebase.js';
 import { ListItem, Avatar} from '@rneui/base';
+import { logInUser } from "./SignIn";
 
 const HomeScreen = ({navigation}) => {
 

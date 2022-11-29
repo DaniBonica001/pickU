@@ -20,7 +20,7 @@ const CustomInput = ({
       <View
         style={[
           styles.inputContainer,
-          { borderColor: error ? "red" : isFocused ? "#797BB5" : "#F3F4FB" },
+          { borderColor: error ? "red" : isFocused ? "#5a7aff" : "#E4E9F1" },
         ]}
       >
         <Icon
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
 
   inputContainer: {
     height: 50,
-    backgroundColor: "#FEF4FB",
+    backgroundColor: "#ffffff",
     flexDirection: "row",
     paddingHorizontal: 15,
     borderRadius: 5,
