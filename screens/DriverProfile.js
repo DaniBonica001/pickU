@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#E4E9F1", 
         alignItems: "center", 
         paddingHorizontal: 20, 
-        padding: 20
+        padding: 0,
+        marginTop: 50
     },
     title: {
         fontSize: 25,
@@ -63,10 +64,10 @@ const styles = StyleSheet.create({
     chatButton: {
         backgroundColor: colors.primary,
         height: 75, width: 75,
-        borderRadius: "100%",
+        borderRadius: 5,
         alignItems: "center",
         justifyContent: "center",
         marginLeft: 320,
-        marginTop: 565
+        marginTop: 400
     }
 });
