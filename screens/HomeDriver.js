@@ -64,7 +64,7 @@ const HomeDriver = ({navigation}) => {
           requests.map(request => {
             return(
               <ListItem
-                key={request.id}
+                key={request.id} onPress={() => (navigation.navigate("RequestScreen", {request}))}
               >
                 <ListItem.Chevron/>
                 <ListItem.Content>

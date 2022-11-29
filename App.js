@@ -13,6 +13,7 @@ import DriverProfile from "./screens/DriverProfile";
 import ProfileScreen from "./screens/ProfileScreen";
 import CreateCupo from "./screens/CreateCupo";
 import CupoScreen from "./screens/CupoScreen";
+import RequestScreen from "./screens/RequestScreen";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -38,7 +39,7 @@ export default function App() {
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
       <Stack.Screen name="CreateCupo" component={CreateCupo} />
       <Stack.Screen name="CupoScreen" component={CupoScreen} />
-      
+      <Stack.Screen name="RequestScreen" component={RequestScreen} />
       
       </Stack.Navigator>
 
