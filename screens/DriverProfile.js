@@ -16,13 +16,13 @@ const DriverProfile = ({navigation}) => {
         <View style={styles.topBar}>
             <Avatar.Image source = {Logo} size = {75}/>
             <View style={{marginLeft: 20}}>
-                <Text style={styles.title}>Gabriel Delgado</Text>
-                <Text style = {styles.caption}>@Gabriel10</Text>
+                <Text style={styles.title}>Felipe Barreto</Text>
+                <Text style = {styles.caption}>@Pipe10</Text>
                 <View style={styles.stars}>
                     <Entypo name="star" size={20} color="#5a7aff" />
                     <Entypo name="star" size={20} color="#5a7aff" />
                     <Entypo name="star" size={20} color="#5a7aff" />
-                    <Entypo name="star" size={20} color="#5a7aff" />
+                    <Entypo name="star-outlined" size={20} color="#5a7aff" />
                     <Entypo name="star-outlined" size={20} color="#5a7aff" />
                 </View>
             </View>
