@@ -12,7 +12,7 @@ const HomeDriver = ({navigation}) => {
   const [requests, setRequests] = useState([]);
   
   useEffect(() => {
-    db.collection('request').onSnapshot(querySnapshot => {
+    db.collection('request').where("driverId", "==", logInUser).onSnapshot(querySnapshot => {
       const requests = [];
       querySnapshot.docs.forEach(doc => {
         const {date, cupoId, passengerId, driverId} = doc.data()
@@ -43,7 +43,7 @@ const HomeDriver = ({navigation}) => {
           requests.map(request => {
             return(
               <ListItem
-                key={request.id} onPress={() => (navigation.navigate("RequestScreen", {request}))}
+                key={request.id} onPress={() => (navigation.navigate("RequestScreen", request))}
               >
                 <ListItem.Chevron/>
                 <ListItem.Content>

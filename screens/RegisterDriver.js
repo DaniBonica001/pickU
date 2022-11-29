@@ -53,9 +53,6 @@ const RegisterDriver = ({ navigation }) => {
     }
   }
 
-  async function checkUser(id){
-    return await db.collection('driver').where('id','==',id)
-  }
 
   return (
     <SafeAreaView
