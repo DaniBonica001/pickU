@@ -101,5 +101,10 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     marginRight: 20,
     marginBottom: 50,
+  },
+  container:  {
+    flex: 1,
+    flexDirection:  'row',
+    alignSelf: 'flex-end'
   }
 });
