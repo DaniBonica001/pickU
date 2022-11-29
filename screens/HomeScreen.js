@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
 },
   buttonContainer: {
     flexDirection: "row",
-    marginLeft: 220,
-    marginTop: 460
+    marginLeft: 100,
+    marginTop: 300
   },
 });
