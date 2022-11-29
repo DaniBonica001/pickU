@@ -15,17 +15,14 @@ const RequestScreen = ({ route, navigation }) => {
     alert("Cupo rechazado")
   }
   function checkProfile(){
-    bababoy
+    navigation.navigate("ProfileScreen")
   }
 
   return (
     <View>
-      <Text>Request Screen</Text>
-      <Text>Id request: {id}</Text>
-      <Text>Fecha: {date}</Text>
-      <Text>Id cupo: {cupoId}</Text>
-      <Text>Id pasajero: {passengerId}</Text>
-      <Text>Id conductor:{driverId}</Text>
+      <Text style={styles.text}>Request Screen</Text>
+      <Text style={styles.text}>Fecha: {date}</Text>
+      <Text style={styles.text}>Id conductor:{driverId}</Text>
 
       <View style={styles.container}>
         <CustomButton
@@ -45,7 +42,7 @@ const RequestScreen = ({ route, navigation }) => {
         <CustomButton
           text="Revisar perfil"
           onPress={checkProfile}
-          bgColor="#FA432D"
+          bgColor="#FAFAFA"
           fgColor="#131530"
         />
       </View>
@@ -59,6 +56,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center'
+  },
+  text: {
+    color: "black",
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
 

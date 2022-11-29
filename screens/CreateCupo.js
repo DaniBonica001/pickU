@@ -108,6 +108,12 @@ const CreateCupo = ({navigation}) => {
           />
 
           <CustomButton text="Crear cupo" onPress={onRegisterPressed} />
+
+          <View>
+            <Text></Text>
+            <Text></Text>
+          </View>
+
         </View>
       </ScrollView>
     </SafeAreaView>

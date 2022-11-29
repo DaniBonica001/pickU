@@ -6,7 +6,7 @@ import { Entypo } from '@expo/vector-icons';
 import {Avatar,Title,Caption} from 'react-native-paper';
 import Logo from "../assets/User.png";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
 
     return(
         <SafeAreaView>

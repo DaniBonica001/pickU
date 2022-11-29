@@ -118,11 +118,14 @@ const RegisterPassenger = ({navigation}) => {
 
           <Text
             style={styles.text}
-          >¿Ya tienes una cuenta?</Text>
+          ></Text>
           <Text onPress={() => navigation.navigate("SignIn")}
             style={{ color: "#5A7AFF", fontSize: 16, fontWeight: "bold" }}
           >Inicia sesión
           </Text>
+          <View>
+            <Text></Text>
+          </View>
 
         </View>
       </ScrollView>
