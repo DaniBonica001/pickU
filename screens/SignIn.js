@@ -92,7 +92,7 @@ const SignIn = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView behavior="padding">
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.main} scrollEnabled={false}>
         <View style={styles.container}>
           <Image
             source={Logo}
@@ -102,24 +102,26 @@ const SignIn = ({ navigation }) => {
 
           <CustomInput
             iconName="account-box-outline"
-            label="Cédula de ciudadanía"
+            label="Cédula de Ciudadanía"
             placeholder="Cédula de ciudadanía"
             onChangeText={(value) => handleChangeText("id", value)}
           />
           <CustomInput
             iconName="lock-outline"
-            label="Password"
+            label="Contraseña"
             placeholder="Ingresa tu contraseña"
             secureTextEntry={true}
             onChangeText={(value) => handleChangeText("password", value)}
           />
+          
+          
 
           <View style={styles.switchContainer}>
-            <Text>Iniciar como conductor</Text>
+            <Text style={styles.label}>Iniciar como conductor</Text>
             <Switch
-              trackColor={{ false: "#767577", true: "#81b0ff" }}
-              thumbColor={isEnabled ? "#5A7AFF" : "#A9A8A8"}
-              ios_backgroundColor="#3e3e3e"
+              trackColor={{ false: "#24f06b", true: "#E4E9F1" }}
+              thumbColor={isEnabled ? "#5a7aff" : "#ffffff"}
+              ios_backgroundColor="#ffffff"
               onValueChange={toggleSwitch}
               value={isEnabled}
             />
@@ -130,15 +132,15 @@ const SignIn = ({ navigation }) => {
           <CustomButton
             text="Registrarse como Conductor"
             onPress={handleSignUpDriver}
-            bgColor="#CDD7FF"
-            fgColor="#5A7AFF"
+            bgColor="#E4E9F1"
+            fgColor="#131530"
           />
 
           <CustomButton
             text="Registrarse como Pasajero"
             onPress={handleSignUpPassenger}
-            bgColor="#CDD7FF"
-            fgColor="#5A7AFF"
+            bgColor="#E4E9F1"
+            fgColor="#131530"
           />
         </View>
       </ScrollView>
@@ -156,7 +158,7 @@ const styles = StyleSheet.create({
     padding: 30
   },
   logo: {
-    width: "70%",
+    width: "50%",
     maxWidth: 500,
     maxHeight: 200,
   },
@@ -165,5 +167,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: 'row'
-  }
+  },
+  main: {
+    backgroundColor: "#FFFFFF"
+  },
+  label: {
+    marginRight: 10,
+    fontSize: 14,
+    color: "#131530",
+    fontWeight: "bold",
+    alignSelf: "center",
+  },
 });
