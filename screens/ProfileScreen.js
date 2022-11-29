@@ -9,56 +9,26 @@ import Logo from "../assets/User.png";
 const ProfileScreen = () => {
 
     return(
-        <SafeAreaView style={styles.root}>
-      <Text>Driver Screen</Text>
-        <View style={styles.userInfoSection}>
-            <View style={{flexDirection: 'row', marginTop: 15}}>
-                <Avatar.Image
-                    source = {Logo}
-                    size = {80}
-                />
-                <View>
-                    <Title>Gabriel Delgado</Title>
-                    <Caption style = {styles.caption}>@Gabriel10</Caption>
+        <SafeAreaView>
+        <View style={styles.topBar}>
+            <Avatar.Image source = {Logo} size = {75}/>
+            <View style={{marginLeft: 20}}>
+                <Text style={styles.title}>Gabriel Delgado</Text>
+                <Text style = {styles.caption}>@Gabriel10</Text>
+                <View style={styles.stars}>
+                    <Entypo name="star" size={20} color="#5a7aff" />
+                    <Entypo name="star" size={20} color="#5a7aff" />
+                    <Entypo name="star" size={20} color="#5a7aff" />
+                    <Entypo name="star" size={20} color="#5a7aff" />
+                    <Entypo name="star-outlined" size={20} color="#5a7aff" />
                 </View>
             </View>
-        </View>
+        </View>   
 
-        <View style = {styles.userInfoSection}>
-            <View style = {styles.menuItem}>
-                <Entypo name="address" size={20} color={colors.black} />
-                <View style = {styles.userInfoSection}>
-                    <Text>Cra 85b #33-55</Text>
-                </View>
-            </View>
-
-        </View>
-
-        <View style = {styles.userInfoSection}>
-            <View>
-                <Text>Driver Rate</Text>
-            </View>
-            <View style = {styles.menuItem}>
-                <Entypo name="star" size={20} color={colors.black} />
-                <Entypo name="star" size={20} color={colors.black} />
-                <Entypo name="star" size={20} color={colors.black} />
-                <Entypo name="star" size={20} color={colors.black} />
-                <Entypo name="star-outlined" size={20} color={colors.black} />
-            </View>
-
-        </View>
-        
-      
-
-      <View style={styles.sideButtons}>
-
-            <TouchableOpacity
-                onPress={() => navigation.navigate("ChatScreen")}
-                style={styles.chatButton}
-            >
-                <Entypo name="chat" size={24} color={colors.lightGray} />
+        <View style={styles.sideButtons}>
+            <TouchableOpacity onPress={() => navigation.navigate("ChatScreen")} style={styles.chatButton}>
+                <Entypo name="chat" size={24} color="white" />
             </TouchableOpacity>
-            
         </View>
     </SafeAreaView>
     )
@@ -67,38 +37,34 @@ const ProfileScreen = () => {
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
-    sideButtons: {
-        flexDirection: 'column',
-        paddingHorizontal: 320
+    topBar: {
+        flexDirection: 'row', 
+        backgroundColor: "#E4E9F1", 
+        alignItems: "center", 
+        paddingHorizontal: 20, 
+        padding: 0,
+        marginTop: 50
     },
-    userInfoSection: {
-        paddingHorizontal: 30,
+    title: {
+        fontSize: 25,
+        fontWeight: "bold",
+        color: "#131530",
     },
-    menuItem: {
+    subtitle: {
+        fontSize: 15,
+        fontWeight: "normal",
+        color: "#131530"
+    },
+    stars: {
         flexDirection: 'row',
-        paddingVertical: 5,
-      },
-    caption: {
-        fontSize: 14,
-        lineHeight: 14,
-        fontWeight: '500',
-        paddingHorizontal: 10
-      },
+    },
     chatButton: {
         backgroundColor: colors.primary,
-        height: 50,
-        width: 50,
-        borderRadius: 25,
-        alignItems: 'center',
-        justifyContent: 'center',
-        shadowColor: colors.primary,
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: .9,
-        shadowRadius: 8,
-        marginRight: 20,
-        marginBottom: 20,
+        height: 75, width: 75,
+        borderRadius: 5,
+        alignItems: "center",
+        justifyContent: "center",
+        marginLeft: 320,
+        marginTop: 400
     }
 });
