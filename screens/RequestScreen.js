@@ -3,9 +3,20 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import CustomButton from "../components/CustomButton";
 import { Entypo } from "@expo/vector-icons";
 import colors from "../colors";
+import { db } from "../firebase";
 
 const RequestScreen = ({ route, navigation }) => {
   const { id, date, cupoId, passengerId, driverId } = route.params;
+
+  function handleAccept(){
+    alert("Cupo aceptado")
+  }
+  function handleReject(){
+    alert("Cupo rechazado")
+  }
+  function checkProfile(){
+    bababoy
+  }
 
   return (
     <View>
@@ -19,14 +30,21 @@ const RequestScreen = ({ route, navigation }) => {
       <View style={styles.container}>
         <CustomButton
           text="Aceptar"
-          onPress={() => console.log("sape")}
+          onPress={handleAccept}
           bgColor="#2EF181"
           fgColor="#131530"
         />
 
         <CustomButton
           text="Rechazar"
-          onPress={() => console.log("sape")}
+          onPress={handleReject}
+          bgColor="#FA432D"
+          fgColor="#131530"
+        />
+
+        <CustomButton
+          text="Revisar perfil"
+          onPress={checkProfile}
           bgColor="#FA432D"
           fgColor="#131530"
         />
@@ -43,3 +61,4 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
 });
+
